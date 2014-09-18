@@ -15,5 +15,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
-rm ~/.oh-my-zsh/themes/phuntimes.zsh-theme
+rm -f ~/.oh-my-zsh/themes/phuntimes.zsh-theme
 ln -s $dir/phuntimes.zsh-theme ~/.oh-my-zsh/themes/
