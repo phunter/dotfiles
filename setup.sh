@@ -10,8 +10,10 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     for file in $files; do
-        echo "$dir/$file --> ~/$file"
 	rm -f ~/$file
-        ln -s $dir/$file ~/$file
+        ln -s $dir/$file ~/
     done
 fi
+
+rm ~/.oh-my-zsh/themes/phuntimes.zsh-theme
+ln -s $dir/phuntimes.zsh-theme ~/.oh-my-zsh/themes/
