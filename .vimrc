@@ -96,3 +96,6 @@ set smarttab
 
 " always uses spaces instead of tab characters
 set expandtab
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
