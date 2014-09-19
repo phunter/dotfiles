@@ -9,10 +9,12 @@ You will need to install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh):
 As well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and 
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
 
-```pip install virtualenv virtualenvwrapper
+```sh
+pip install virtualenv virtualenvwrapper
 export WORKON_HOME=~/virtualenvs
-$ mkdir -p $WORKON_HOME
-$ source /usr/local/bin/virtualenvwrapper.sh```
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
+```
 
 ## install
 
