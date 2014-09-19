@@ -4,7 +4,7 @@
 
 You will need to install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh):
 
-```git clone git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh```
+```git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh```
 
 as well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and 
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
