@@ -99,3 +99,6 @@ set expandtab
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" remove delays on ESC
+set timeoutlen=1000 ttimeoutlen=0
