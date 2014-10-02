@@ -102,3 +102,10 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " remove delays on ESC
 set timeoutlen=1000 ttimeoutlen=0
+
+" line numbers always on and color
+set number
+hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+
+set cursorline
+hi CursorLine term=bold cterm=bold

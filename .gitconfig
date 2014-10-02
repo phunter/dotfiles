@@ -1,8 +1,6 @@
 [user]
         name = Hunter McCurry
         email = Hunter McCurry <480487+phunter@users.noreply.github.com>
-[push]
-        default = simple
 [alias]
     br = branch --color
         ci = commit
