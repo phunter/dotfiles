@@ -1,8 +1,6 @@
 [user]
         name = Hunter McCurry
         email = hunter@spotify.com
-[push]
-        default = simple
 [alias]
     br = branch --color
         ci = commit
