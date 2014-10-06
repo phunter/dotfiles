@@ -15,7 +15,7 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+set history=200		" keep 200 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -37,11 +37,13 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  
+  " <Ctrl-l> redraws the screen and removes any search highlighting.
+  nnoremap <silent> <C-l> :nohl<CR><C-l>
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
@@ -68,9 +70,7 @@ if has("autocmd")
   augroup END
 
 else
-
   set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -97,15 +97,29 @@ set smarttab
 " always uses spaces instead of tab characters
 set expandtab
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
 " remove delays on ESC
 set timeoutlen=1000 ttimeoutlen=0
 
-" line numbers always on and color
+" line numbers and color
 set number
 hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+" set cursorline
+" hi CursorLine term=bold cterm=bold
 
-set cursorline
-hi CursorLine term=bold cterm=bold
+" zsh-style tab-complete in command-line mode
+set wildmenu
+set wildmode=longest:full,full
+" set wildmode=longest:list,full
+
+" <C-p> and <C-n> filter command history
+" cnoremap <C-p> <Up> 
+" cnoremap <C-n> <Down>
+
+" shortcuts for switching panes
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" expand active file directory in command mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
