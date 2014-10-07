@@ -37,9 +37,7 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  
-  " <Ctrl-l> redraws the screen and removes any search highlighting.
-  nnoremap <silent> <C-l> :nohl<CR><C-l>
+  highlight Search guibg='Purple' guifg='NONE'  
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -100,11 +98,8 @@ set expandtab
 " remove delays on ESC
 set timeoutlen=1000 ttimeoutlen=0
 
-" line numbers and color
-set number
-hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
-" set cursorline
-" hi CursorLine term=bold cterm=bold
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " zsh-style tab-complete in command-line mode
 set wildmenu
@@ -123,3 +118,35 @@ map <C-l> <C-w>l
 
 " expand active file directory in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=50
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
+
+colorscheme peachpuff
+
+" line numbers and color overrides
+set number
+hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+" set cursorline
+" hi CursorLine term=bold cterm=bold
+

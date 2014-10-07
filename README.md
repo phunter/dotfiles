@@ -10,7 +10,7 @@ as well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
 
 ```sh
-pip install virtualenv virtualenvwrapper
+sudo pip install virtualenv virtualenvwrapper
 export WORKON_HOME=~/virtualenvs
 mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
