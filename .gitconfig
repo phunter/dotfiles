@@ -20,3 +20,5 @@
         sh = show HEAD
         st = status
         un = reset HEAD --
+[color]
+	ui = true
