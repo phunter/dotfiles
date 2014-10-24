@@ -26,6 +26,12 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
+Set up [Vundle](https://github.com/gmarik/Vundle.vim) for managing
+vim plugins:
+```sh
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
 Use zshell:
 ```sh
 zsh
