@@ -31,6 +31,10 @@ vim plugins:
 ```sh
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
+The first time you run vim you will have to install the plugins with:
+```sh
+:PluginInstall
+```
 
 Use zshell:
 ```sh
