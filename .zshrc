@@ -36,26 +36,24 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 
 alias ll='ls -l'
-
-alias svnclean="svn status --no-ignore | grep -E '^[\?I]' | cut -c9- | tr '\n' '\0' | xargs -0 rm -r"
-alias svnuntracked="svn st --no-ignore | grep -E '^[\?I]'"
+alias la='ls -la'
 
 # fix funky zsh behavior for bash scripts: ==
 unsetopt equals
 
-# for the analyzer intel libraries
-source /opt/intel/ipp/bin/ippvars.sh intel64
-source /opt/intel/mkl/bin/mklvars.sh intel64
-
 # bash-style command line comments
 setopt interactivecomments
-
-# svn stuff
-# export SVN=https://svn.echonest.com/repos
-export SVN=https://svn.p.echonest.net/svn/echonest
 
 # virtualenv stuff
 export WORKON_HOME=$HOME/virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
 
+# allow ssh forward agent on screen/tmux reconnect
+AGENT=/tmp/ssh-agent-screen-${USER}
+if [[ $TERM == "screen-256color" ]]; then
+  export SSH_AUTH_SOCK="${AGENT}"
+else
+  test "${SSH_AUTH_SOCK}" && [[ "${SSH_AUTH_SOCK}" != "${AGENT}" ]] && ln -sf "${SSH_AUTH_SOCK}" "${AGENT}"
+fi
+unset AGENT:
