@@ -22,8 +22,7 @@ Run this:
 
 ```sh
 git clone https://github.com/phunter/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-./setup.sh
+./dotfiles/setup.sh
 ```
 
 Set up [Vundle](https://github.com/gmarik/Vundle.vim) for managing
