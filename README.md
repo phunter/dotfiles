@@ -2,9 +2,9 @@
 
 ## prerequisites
 
-You will need to install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh):
+You will need to install [antigen](https://github.com/zsh-users/antigen):
 
-```git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh```
+```git clone https://github.com/zsh-users/antigen.git ~/antigen```
 
 as well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and 
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
