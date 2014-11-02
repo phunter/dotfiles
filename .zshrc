@@ -1,13 +1,23 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="phuntimes"
+# Load Antigen
+source ~/antigen/antigen.zsh
+
+# load core of oh-my-zsh
+antigen use oh-my-zsh
+
+# zsh plugins
+antigen bundle common-aliases
+antigen bundle dircycle
+antigen bundle sudo
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zaw
+
+# zsh theme
+antigen theme ~/dotfiles/ phuntimes
+
+# tell antigen that you're done
+antigen apply
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -23,20 +33,8 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# plugins=(git svn virtualenv tmux brew virtualenvwrapper sublime)
-
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
 export EDITOR=vim
 export SVN_EDITOR=vim
-
-alias ll='ls -l'
-alias la='ls -la'
 
 # fix funky zsh behavior for bash scripts: ==
 unsetopt equals
@@ -57,3 +55,23 @@ else
   test "${SSH_AUTH_SOCK}" && [[ "${SSH_AUTH_SOCK}" != "${AGENT}" ]] && ln -sf "${SSH_AUTH_SOCK}" "${AGENT}"
 fi
 unset AGENT:
+
+# zaw for history search
+bindkey '^R' zaw-history
+bindkey -M filterselect '^R' down-line-or-history
+bindkey -M filterselect '^S' up-line-or-history
+bindkey -M filterselect '^E' accept-search
+
+zstyle ':filter-select:highlight' matched fg=green
+zstyle ':filter-select' max-lines 5
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive 
+zstyle ':filter-select' extended-search yes # see below
+
+# https://github.com/juanmasg/zshrc/blob/master/yank-nth-arg.zsh 
+yank-nth-arg() {
+    local line="${history[${#history}]}"
+    zle -U ${${(-z)line}[2]}
+}
+
+zle -N yank-nth-arg
+bindkey "^[^y" yank-nth-arg

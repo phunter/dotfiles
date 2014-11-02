@@ -20,9 +20,6 @@ for file in $home_files; do
     echo $file
 done
 
-rm -f ~/.oh-my-zsh/themes/phuntimes.zsh-theme
-ln -s $dir/phuntimes.zsh-theme ~/.oh-my-zsh/themes/
-
 virtualenv_files="postactivate postdeactivate"
 for file in $virtualenv_files; do
     rm -f $WORKON_HOME/$file
