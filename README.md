@@ -2,9 +2,12 @@
 
 ## prerequisites
 
-You will need to install [antigen](https://github.com/zsh-users/antigen):
+You will need to install [antigen](https://github.com/zsh-users/antigen)
+and [powerline](https://github.com/Lokaltog/powerline):
 
-```git clone https://github.com/zsh-users/antigen.git ~/antigen```
+```sh
+git clone https://github.com/zsh-users/antigen.git ~/antigen
+pip install --user git+git://github.com/Lokaltog/powerline```
 
 as well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and 
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
