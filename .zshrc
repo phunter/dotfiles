@@ -48,7 +48,7 @@ export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
 
 # path to powerline root
-export POWERLINE_ROOT=$HOME/.local/lib/python2.7/site-packages/
+export POWERLINE_ROOT=`pip show powerline-status | grep Location | cut -d " " -f 2`
 
 # allow ssh forward agent on screen/tmux reconnect
 AGENT=/tmp/ssh-agent-screen-${USER}
@@ -67,10 +67,10 @@ bindkey -M filterselect '^E' accept-search
 
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines 5
-zstyle ':filter-select' case-insensitive yes # enable case-insensitive 
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
 
-# https://github.com/juanmasg/zshrc/blob/master/yank-nth-arg.zsh 
+# https://github.com/juanmasg/zshrc/blob/master/yank-nth-arg.zsh
 yank-nth-arg() {
     local line="${history[${#history}]}"
     zle -U ${${(-z)line}[2]}
