@@ -27,7 +27,6 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'user/L9', {'name': 'newL9'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,6 +183,7 @@ hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 set noswapfile
 
 " for powerline
+set rtp+=$POWERLINE_ROOT/powerline/bindings/vim
 set laststatus=2
 set encoding=utf-8
 set t_Co=256

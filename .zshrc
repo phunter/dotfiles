@@ -47,6 +47,9 @@ export WORKON_HOME=$HOME/virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
 
+# path to powerline root
+export POWERLINE_ROOT=$HOME/.local/lib/python2.7/site-packages/
+
 # allow ssh forward agent on screen/tmux reconnect
 AGENT=/tmp/ssh-agent-screen-${USER}
 if [[ $TERM == "screen-256color" ]]; then
