@@ -7,7 +7,8 @@ and [powerline](https://github.com/Lokaltog/powerline):
 
 ```sh
 git clone https://github.com/zsh-users/antigen.git ~/antigen
-pip install --user git+git://github.com/Lokaltog/powerline```
+pip install --user git+git://github.com/Lokaltog/powerline
+```
 
 as well as [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and 
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
