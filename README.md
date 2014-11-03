@@ -23,7 +23,7 @@ git clone https://github.com/phunter/dotfiles.git ~/dotfiles
 $HOME/dotfiles/setup.sh
 ```
 
-The first time you run zsh, antigen will clone and install plugins. start zsh with:
+The first time you run zsh, antigen will clone and install plugins. Start zsh with:
 ```sh
 zsh
 ```
