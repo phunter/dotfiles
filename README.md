@@ -11,7 +11,7 @@ You will need to install:
 ```sh
 git clone https://github.com/zsh-users/antigen.git ~/antigen
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-pip install git+git://github.com/Lokaltog/powerline virtualenv virtualenvwrapper
+sudo pip install git+git://github.com/Lokaltog/powerline virtualenv virtualenvwrapper
 export WORKON_HOME=~/virtualenvs
 mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
