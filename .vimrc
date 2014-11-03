@@ -180,6 +180,14 @@ hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 " set cursorline
 " hi CursorLine term=bold cterm=bold
 
+" show invisible characters
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" invisible character colors
+hi NonText ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+hi SpecialKey ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+
 set noswapfile
 
 " for powerline
