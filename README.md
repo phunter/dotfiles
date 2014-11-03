@@ -32,14 +32,7 @@ or set it as the default:
 ```sh
 chsh -s $(which zsh)
 ```
-```sh
-zsh
-```
 
-or set it as the default:
-```sh
-chsh -s $(which zsh)
-```
 The first time you run vim you will have to install the plugins with:
 ```sh
 :PluginInstall
