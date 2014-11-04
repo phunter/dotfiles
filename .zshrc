@@ -78,3 +78,11 @@ yank-nth-arg() {
 
 zle -N yank-nth-arg
 bindkey "^[^y" yank-nth-arg
+
+dupe-prev-arg() {
+    zle -U !#:$
+}
+
+zle -N dupe-prev-arg
+bindkey "^\\" dupe-prev-arg
+
