@@ -75,7 +75,6 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  highlight Search guibg='Purple' guifg='NONE'  
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -189,6 +188,9 @@ set listchars=tab:▸\ ,eol:¬
 " invisible character colors
 hi NonText ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 hi SpecialKey ctermfg=DarkGrey guifg=#2b506e guibg=#000000
+
+" custom search highlight
+hi Search ctermfg=Black ctermbg=39 cterm=bold,underline
 
 set noswapfile
 
