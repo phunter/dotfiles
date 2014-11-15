@@ -11,6 +11,7 @@ antigen bundle common-aliases
 antigen bundle dircycle
 antigen bundle sudo
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zaw
 
 # zsh theme
@@ -86,3 +87,8 @@ dupe-prev-arg() {
 zle -N dupe-prev-arg
 bindkey "^\\" dupe-prev-arg
 
+# for zsh-history-substring-search
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
