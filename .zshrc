@@ -7,12 +7,12 @@ source ~/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 # zsh plugins
+antigen bundle brew
 antigen bundle common-aliases
 antigen bundle dircycle
 antigen bundle sudo
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zaw
 
 # zsh theme
 antigen theme ~/dotfiles/ phuntimes
@@ -36,12 +36,16 @@ COMPLETION_WAITING_DOTS="true"
 
 export EDITOR=vim
 export SVN_EDITOR=vim
+alias vimrc="$EDITOR ~/.vimrc"
 
 # fix funky zsh behavior for bash scripts: ==
 unsetopt equals
 
 # bash-style command line comments
 setopt interactivecomments
+
+# bash-style backward kill
+bindkey \^U backward-kill-line
 
 # virtualenv stuff
 export WORKON_HOME=$HOME/virtualenvs
@@ -60,35 +64,12 @@ else
 fi
 unset AGENT:
 
-# zaw for history search
-bindkey '^R' zaw-history
-bindkey -M filterselect '^R' down-line-or-history
-bindkey -M filterselect '^S' up-line-or-history
-bindkey -M filterselect '^E' accept-search
-
-zstyle ':filter-select:highlight' matched fg=green
-zstyle ':filter-select' max-lines 5
-zstyle ':filter-select' case-insensitive yes # enable case-insensitive
-zstyle ':filter-select' extended-search yes # see below
-
-# https://github.com/juanmasg/zshrc/blob/master/yank-nth-arg.zsh
-yank-nth-arg() {
-    local line="${history[${#history}]}"
-    zle -U ${${(-z)line}[2]}
-}
-
-zle -N yank-nth-arg
-bindkey "^[^y" yank-nth-arg
-
-dupe-prev-arg() {
-    zle -U !#:$
-}
-
-zle -N dupe-prev-arg
-bindkey "^\\" dupe-prev-arg
-
 # for zsh-history-substring-search
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# fuzzy find
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='-e --prompt="ᐅ "'

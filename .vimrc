@@ -28,8 +28,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'junegunn/fzf'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,7 +142,7 @@ set wildmode=longest:full,full
 " set wildmode=longest:list,full
 
 " <C-p> and <C-n> filter command history
-" cnoremap <C-p> <Up> 
+" cnoremap <C-p> <Up>
 " cnoremap <C-n> <Down>
 
 " shortcuts for switching panes
@@ -201,3 +204,7 @@ set laststatus=2
 set encoding=utf-8
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
+
+" fuzzy find
+nnoremap <silent> <C-t> :FZF<CR>
+source ~/.fzf.vim
