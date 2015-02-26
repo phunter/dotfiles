@@ -11,11 +11,16 @@ antigen bundle brew
 antigen bundle common-aliases
 antigen bundle dircycle
 antigen bundle sudo
+antigen bundle vi-mode
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle hchbaw/opp.zsh opp.plugin.zsh
 
 # zsh theme
-antigen theme ~/dotfiles/ phuntimes
+antigen theme ~/dotfiles/ phuntimes --no-local-clone
+
+# somehow this doesn't get sourced properly
+source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-hchbaw-SLASH-opp.zsh.git/opp.plugin.zsh
 
 # tell antigen that you're done
 antigen apply
@@ -69,6 +74,15 @@ unset AGENT:
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+export KEYTIMEOUT=1
+
+# searching
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
+# it's like, space AND completion. Gnarlbot
+bindkey -M viins ' ' magic-space
 
 # fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
