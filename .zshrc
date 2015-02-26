@@ -48,6 +48,9 @@ unsetopt equals
 
 # bash-style command line comments
 setopt interactivecomments
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 # bash-style backward kill
 bindkey \^U backward-kill-line
