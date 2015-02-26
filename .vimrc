@@ -207,3 +207,8 @@ let g:Powerline_symbols = 'fancy'
 
 " fuzzy find
 nnoremap <silent> <C-t> :FZF<CR>
+
+nnoremap <C-CR> O<Esc>
+nnoremap <CR> o<Esc>
+
+nnoremap Y y$
