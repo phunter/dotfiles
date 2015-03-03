@@ -79,6 +79,7 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
 export KEYTIMEOUT=1
+bindkey -sM vicmd '^[' '^G'
 
 # searching
 bindkey '^[[A' up-line-or-search
