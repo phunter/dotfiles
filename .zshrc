@@ -48,12 +48,11 @@ unsetopt equals
 
 # bash-style command line comments
 setopt interactivecomments
+
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-
-# bash-style backward kill
-bindkey \^U backward-kill-line
+setopt csh_junkie_history
 
 # virtualenv stuff
 export WORKON_HOME=$HOME/virtualenvs
@@ -72,14 +71,17 @@ else
 fi
 unset AGENT:
 
+# bash-style backward kill
+bindkey '^U' backward-kill-line
+
 # for zsh-history-substring-search
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-export KEYTIMEOUT=1
-bindkey -sM vicmd '^[' '^G'
+# export KEYTIMEOUT=1
+# bindkey -sM vicmd '^[' '^G'
 
 # searching
 bindkey '^[[A' up-line-or-search
@@ -87,6 +89,14 @@ bindkey '^[[B' down-line-or-search
 
 # it's like, space AND completion. Gnarlbot
 bindkey -M viins ' ' magic-space
+
+# custom binding for iterm2 alt-.
+# autoload -Uz insert-last-word
+# zle -N insert-last-word
+# bindkey "^[[11;6~" insert-last-word
+# autoload -Uz copy-earlier-word
+# zle -N copy-earlier-word
+# bindkey "^[[12;6~" copy-earlier-word
 
 # fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

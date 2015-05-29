@@ -105,8 +105,9 @@ function phuntimes_precmd {
 add-zsh-hook precmd phuntimes_precmd
 
 function zle-line-init zle-keymap-select zle-line-finish {
-    MODE_STR=" mode %{$yellow%}normal${PR_RST}"
-    MODE_INDICATOR="${${KEYMAP/vicmd/$MODE_STR}/(main|viins|opp)/}"
+    CMD_STR=" mode %{$yellow%}normal${PR_RST}"
+    INS_STR=" mode %{$red%}insert${PR_RST}"
+    MODE_INDICATOR="${${${KEYMAP/vicmd/$CMD_STR}/viins/$INS_STR}/(main|opp)/}"
     zle reset-prompt
     zle -R
 }
