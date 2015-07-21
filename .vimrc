@@ -35,6 +35,8 @@ Plugin 'junegunn/fzf'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+" Plugin 'klen/python-mode'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,14 +57,16 @@ filetype plugin indent on    " required
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup  " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup  " keep a backup file
+  set backupdir=~/.vim/tmp,.
+  set directory=~/.vim/tmp,.
 endif
-set history=200		" keep 200 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=200  " keep 200 lines of command line history
+set ruler  " show the cursor position all the time
+set showcmd  " display incomplete commands
+set incsearch  " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -83,54 +87,62 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" tabstop, softtabstop, shiftwidth, ...
+set ts=4 sts=4 sw=4 expandtab smarttab
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
+    au!
 
-  " For all text files set 'textwidth' to 80 characters.
-  autocmd FileType text setlocal textwidth=80
+    " For all text files set 'textwidth' to 80 characters.
+    autocmd FileType text setlocal textwidth=80
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+          \ if line("'\"") > 1 && line("'\"") <= line("$") |
+          \   exe "normal! g`\"" |
+          \ endif
 
   augroup END
 
+  " Enable file type detection
+  filetype on
+
+  autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+
 else
-  set autoindent		" always set autoindenting on
+  set autoindent  " always set autoindenting on
 endif " has("autocmd")
+
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
-
-" size of a hard tabstop
-set tabstop=4
-
-" size of an "indent"
-set shiftwidth=4
-
-" a combination of spaces and tabs are used to simulate tab stops at a width
-" other than the (hard)tabstop
-set softtabstop=4
-
-" make "tab" insert indents instead of tabs at the beginning of a line
-set smarttab
-
-" always uses spaces instead of tab characters
-set expandtab
 
 " remove delays on ESC
 set timeoutlen=1000 ttimeoutlen=0
@@ -156,29 +168,6 @@ map <C-l> <C-w>l
 " expand active file directory in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" Highlight all instances of word under cursor, when idle.
-" Useful when studying strange source code.
-" Type z/ to toggle highlighting on/off.
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=50
-    echo 'Highlight current word: ON'
-    return 1
-  endif
-endfunction
-
 colorscheme peachpuff
 
 " line numbers and color overrides
@@ -190,6 +179,7 @@ hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 " show invisible characters
 set list
 set listchars=tab:▸\ ,eol:¬
+nmap <leader>l :set list!<CR>
 
 " invisible character colors
 hi NonText ctermfg=DarkGrey guifg=#2b506e guibg=#000000
