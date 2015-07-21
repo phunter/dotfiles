@@ -80,8 +80,8 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-# export KEYTIMEOUT=1
-# bindkey -sM vicmd '^[' '^G'
+export KEYTIMEOUT=1
+bindkey -sM vicmd '^[' '^G'
 
 # searching
 bindkey '^[[A' up-line-or-search
@@ -90,13 +90,14 @@ bindkey '^[[B' down-line-or-search
 # it's like, space AND completion. Gnarlbot
 bindkey -M viins ' ' magic-space
 
-# custom binding for iterm2 alt-.
-# autoload -Uz insert-last-word
-# zle -N insert-last-word
-# bindkey "^[[11;6~" insert-last-word
-# autoload -Uz copy-earlier-word
-# zle -N copy-earlier-word
-# bindkey "^[[12;6~" copy-earlier-word
+# custom binding for iterm2 option-.
+autoload smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+bindkey "\x1f" insert-last-word
+# custom binding for iterm2 option-m
+autoload -Uz copy-earlier-word
+zle -N copy-earlier-word
+bindkey "\x1e" copy-earlier-word
 
 # fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
