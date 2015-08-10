@@ -35,8 +35,9 @@ Plugin 'junegunn/fzf'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-" Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
 Plugin 'tpope/vim-fugitive'
+Plugin 'ivanov/vim-ipython'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,9 +54,18 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" auto-reload vimrc on save
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+set clipboard=unnamed
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+set noswapfile
 if has("vms")
   set nobackup  " do not keep a backup file, use versions instead
 else
@@ -63,7 +73,8 @@ else
   set backupdir=~/.vim/tmp,.
   set directory=~/.vim/tmp,.
 endif
-set history=200  " keep 200 lines of command line history
+
+set history=700
 set ruler  " show the cursor position all the time
 set showcmd  " display incomplete commands
 set incsearch  " do incremental searching
@@ -172,9 +183,11 @@ colorscheme peachpuff
 
 " line numbers and color overrides
 set number
+set colorcolumn=80
+hi ColorColumn ctermbg=233
 hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
-" set cursorline
-" hi CursorLine term=bold cterm=bold
+set cursorline
+hi CursorLine term=bold cterm=bold
 
 " show invisible characters
 set list
@@ -188,8 +201,6 @@ hi SpecialKey ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 " custom search highlight
 hi Search ctermfg=Black ctermbg=39 cterm=bold,underline
 
-set noswapfile
-
 " for powerline
 set rtp+=$POWERLINE_ROOT/powerline/bindings/vim
 set laststatus=2
@@ -200,7 +211,8 @@ let g:Powerline_symbols = 'fancy'
 " fuzzy find
 nnoremap <silent> <C-t> :FZF<CR>
 
-nnoremap <C-CR> O<Esc>
-nnoremap <CR> o<Esc>
-
 nnoremap Y y$
+
+" python folding
+set nofoldenable
+hi Folded ctermbg=233

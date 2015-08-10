@@ -99,6 +99,9 @@ autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey "\x1e" copy-earlier-word
 
+# to unmap ctrl-s for vim
+stty stop undef
+
 # fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='-e --prompt="ᐅ "'
