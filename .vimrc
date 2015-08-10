@@ -35,7 +35,7 @@ Plugin 'junegunn/fzf'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ivanov/vim-ipython'
 Plugin 'hdima/python-syntax'
@@ -184,11 +184,11 @@ colorscheme peachpuff
 
 " line numbers and color overrides
 set number
-set colorcolumn=80
+set colorcolumn=80,81
 hi ColorColumn ctermbg=233
 hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 set cursorline
-hi CursorLine term=bold cterm=bold
+hi CursorLine term=bold cterm=bold ctermbg=233 guibg=121212
 
 " show invisible characters
 set list
