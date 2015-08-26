@@ -3,7 +3,7 @@
     email = Hunter McCurry <480487+phunter@users.noreply.github.com>
 [alias]
     br = branch --color
-    cf = clean -f
+    cf = clean -fd
     ci = commit
     cl = config --list --global
     co = checkout
