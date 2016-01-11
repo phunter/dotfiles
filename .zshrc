@@ -53,6 +53,8 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt csh_junkie_history
+HISTSIZE=100000
+SAVEHIST=100000
 
 # virtualenv stuff
 export WORKON_HOME=$HOME/virtualenvs
