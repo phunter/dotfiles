@@ -5,18 +5,9 @@
 	],
 	"installed_packages":
 	[
-		"1337 Color Scheme",
 		"A File Icon",
-		"Markdown Extended",
-		"MarkdownEditing",
-		"MarkdownTOC",
 		"Material Theme",
 		"Package Control",
 		"Pretty JSON",
-		"sublime_zk"
-	],
-	"repositories":
-	[
-		"https://github.com/renerocksai/sublime_zk"
 	]
 }
