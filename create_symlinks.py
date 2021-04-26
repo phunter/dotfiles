@@ -3,6 +3,8 @@ import os
 
 print('yo')
 
+subl_home = "/Users/hunter/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
+
 symlinkables = {
     ".gitconfig": "~/",
     ".zshrc": "~/",
@@ -10,6 +12,11 @@ symlinkables = {
     ".vimrc": "~/",
     "virtualenv/postactivate": "$WORKON_HOME/",
     "virtualenv/postdeactivate": "$WORKON_HOME/",
+
+    # sublime stuff
+    "sublime/Default\ \(OSX\).sublime-keymap": subl_home,
+    "sublime/Preferences.sublime-settings": subl_home,
+    "sublime/Package\ Control.sublime-settings": subl_home,
 
     # todo: copy instead of symlink
     "custom-capslock.json": "~/.config/karabiner/assets/complex_modifications/",
