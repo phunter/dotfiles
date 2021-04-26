@@ -12,15 +12,13 @@ antigen bundle common-aliases
 antigen bundle dircycle
 antigen bundle sudo
 antigen bundle vi-mode
+
+antigen bundle mattberther/zsh-pyenv
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle hchbaw/opp.zsh opp.plugin.zsh
 
 # zsh theme
 antigen theme ~/dotfiles/ phuntimes --no-local-clone
-
-# somehow this doesn't get sourced properly
-source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-hchbaw-SLASH-opp.zsh.git/opp.plugin.zsh
 
 # tell antigen that you're done
 antigen apply
@@ -56,14 +54,6 @@ setopt csh_junkie_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-# virtualenv stuff
-export WORKON_HOME=$HOME/virtualenvs
-export PROJECT_HOME=$HOME/projects
-source /usr/local/bin/virtualenvwrapper.sh
-
-# path to powerline root
-export POWERLINE_ROOT=`pip show powerline-status | grep Location | cut -d " " -f 2`
-
 # allow ssh forward agent on screen/tmux reconnect
 AGENT=/tmp/ssh-agent-screen-${USER}
 if [[ $TERM == "screen-256color" ]]; then
@@ -71,7 +61,7 @@ if [[ $TERM == "screen-256color" ]]; then
 else
   test "${SSH_AUTH_SOCK}" && [[ "${SSH_AUTH_SOCK}" != "${AGENT}" ]] && ln -sf "${SSH_AUTH_SOCK}" "${AGENT}"
 fi
-unset AGENT:
+unset AGENT
 
 # bash-style backward kill
 bindkey '^U' backward-kill-line
@@ -105,5 +95,19 @@ bindkey "\x1e" copy-earlier-word
 stty stop undef
 
 # fuzzy find
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='-e --prompt="ᐅ "'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# disable that extra leading virtualenv prompt
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# path to powerline root
+export POWERLINE_ROOT=`pip show powerline-status | grep Location | cut -d " " -f 2`

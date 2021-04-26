@@ -26,19 +26,16 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'rking/ag.vim'
-" Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'junegunn/fzf'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'ivanov/vim-ipython'
-Plugin 'hdima/python-syntax'
+Plugin 'vim-python/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -188,7 +185,7 @@ set colorcolumn=80,81
 hi ColorColumn ctermbg=233
 hi LineNr ctermfg=DarkGrey guifg=#2b506e guibg=#000000
 set cursorline
-hi CursorLine term=bold cterm=bold ctermbg=233 guibg=121212
+hi CursorLine term=bold cterm=bold ctermbg=233 guibg=#121212
 
 " show invisible characters
 set list
@@ -229,6 +226,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_python_checkers = ['python3', 'python2']
 
 " Visual highlight black
 hi Visual ctermbg=0
