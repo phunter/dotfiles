@@ -98,11 +98,10 @@ stty stop undef
 export FZF_DEFAULT_OPTS='-e --prompt="ᐅ "'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# disable that extra leading virtualenv prompt
+# pyenv stuff
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # jenv
@@ -111,3 +110,9 @@ eval "$(jenv init -)"
 
 # path to powerline root
 export POWERLINE_ROOT=`pip show powerline-status | grep Location | cut -d " " -f 2`
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# Created by `pipx` on 2021-04-06 22:20:20
+export PATH="$PATH:/Users/hunter/.local/bin"
