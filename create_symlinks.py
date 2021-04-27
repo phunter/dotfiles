@@ -26,6 +26,8 @@ symlinkables = {
     "custom-capslock.json": "~/.config/karabiner/assets/complex_modifications/",
 }
 
+# ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
 for source, dest in symlinkables.items():
     # os.symlink(src, dst)
     print("linking:  {}  -->  {}".format(source, dest))
