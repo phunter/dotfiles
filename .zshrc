@@ -40,6 +40,8 @@ COMPLETION_WAITING_DOTS="true"
 export EDITOR=vim
 export SVN_EDITOR=vim
 alias vimrc="$EDITOR ~/.vimrc"
+mkdir -p ~/.vim/tmp  # make folder for versions
+
 
 # fix funky zsh behavior for bash scripts: ==
 unsetopt equals
