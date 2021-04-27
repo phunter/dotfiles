@@ -25,18 +25,34 @@ defaults write com.apple.Dock autohide-delay -float 0.05
 # System Preferences > Dock > Automatically hide and show the Dock (delay)
 defaults write com.apple.dock autohide-time-modifier -float 0.1
 
+
+# System Preferences > Dock > Minimize Windows using > Scale effect
+defaults write com.apple.dock mineffect -string scale
+
+
+
 ### Mission Control
 
 # System Preferences > Mission Control > Automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
+defaults write com.apple.dock expose-animation-duration -float 0.05
+
+
 ### Keyboard
+
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 
 ### Finder
 
 # Finder > Preferences > Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show hidden files
+defaults write com.apple.Finder AppleShowAllFiles true
 
 # Finder > Preferences > Show wraning before changing an extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool falvse
@@ -46,6 +62,10 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Finder > View > Show Path Bar
 defaults write com.apple.finder ShowPathbar -bool true
+
+# Make Finder quitable
+defaults write com.apple.finder QuitMenuItem -bool true
+
 
 #####################
 
