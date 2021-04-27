@@ -6,6 +6,7 @@ print('yo')
 subl_home = "/Users/hunter/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
 
 symlinkables = {
+    ".agignore ": "~/",
     ".gitconfig": "~/",
     ".zshrc": "~/",
     ".tmux.conf": "~/",
