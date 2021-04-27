@@ -1,0 +1,55 @@
+# System Preferences > General > Sidebar icon size: Large
+defaults write -globalDomain NSTableViewDefaultSizeMode -int 3
+
+
+### Dock
+
+# System Preferences > Dock > Size:
+defaults write com.apple.dock tilesize -int 70
+
+# System Preferences > Dock > Magnification:
+defaults write com.apple.dock magnification -bool true
+
+# System Preferences > Dock > Size (magnified):
+defaults write com.apple.dock largesize -int 90
+
+# System Preferences > Dock > Minimize windows using: Scale effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# System Preferences > Dock > Automatically hide and show the Dock:
+defaults write com.apple.dock autohide -bool true
+
+# System Preferences > Dock > Automatically hide and show the Dock (duration)
+defaults write com.apple.Dock autohide-delay -float 0.05
+
+# System Preferences > Dock > Automatically hide and show the Dock (delay)
+defaults write com.apple.dock autohide-time-modifier -float 0.1
+
+### Mission Control
+
+# System Preferences > Mission Control > Automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+### Keyboard
+
+
+### Finder
+
+# Finder > Preferences > Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder > Preferences > Show wraning before changing an extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool falvse
+
+# Finder > View > As List
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Finder > View > Show Path Bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+#####################
+
+# Kill affected apps
+for app in "Dock" "Finder"; do
+  killall "${app}" > /dev/null 2>&1
+done
