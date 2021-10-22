@@ -46,6 +46,10 @@ defaults write -g KeyRepeat -int 1
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 
+### Trackpad
+
+# Trackpad > Point & Click > Tap to click
+
 ### Finder
 
 # Finder > Preferences > Show all filename extensions

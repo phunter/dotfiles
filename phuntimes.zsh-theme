@@ -115,8 +115,10 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-finish
 
+
 USER_PROMPT=%{$purple%}%n${PR_RST}
-HOST_PROMPT=%{$orange%}%m${PR_RST}
+HOST_NAME=$(scutil --get LocalHostName)
+HOST_PROMPT=%{$orange%}$HOST_NAME${PR_RST}
 DIR_PROMPT=%{$limegreen%}%~${PR_RST}
 PROMPT=$'
 ╭─$USER_PROMPT at $HOST_PROMPT in $DIR_PROMPT$(virtualenv_info)$vcs_info_msg_0_$MODE_INDICATOR
