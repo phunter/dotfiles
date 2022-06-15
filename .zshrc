@@ -103,7 +103,7 @@ export FZF_DEFAULT_OPTS='-e --prompt="ᐅ "'
 # pyenv stuff
 eval "$(pyenv init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+export PATH="$(pyenv root)/shims:$PATH"
 
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -117,3 +117,7 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 
 # Created by `pipx` on 2021-04-06 22:20:20
 export PATH="$PATH:/Users/hunter/.local/bin"
+
+for file in ~/.additions_*; do
+  source "$file"
+done

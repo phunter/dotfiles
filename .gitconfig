@@ -3,6 +3,7 @@
     email = hunter@spotify.com
 [alias]
     br = branch --color
+    ca = commit --amend
     cf = clean -fd
     ci = commit
     cl = config --list --global
