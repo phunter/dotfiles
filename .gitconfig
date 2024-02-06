@@ -23,6 +23,6 @@
     st = status
     un = reset HEAD --
 [color]
-	ui = true
+    ui = true
 [push]
-	default = current
+    default = current

@@ -1,8 +1,8 @@
 {
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"detect_indentation": false,
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 21,
+	"font_size": 18,
 	"ignored_packages":
 	[
 		"Vintage",

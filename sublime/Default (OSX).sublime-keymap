@@ -1,5 +1,5 @@
 [
     { "keys": ["alt+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
     { "keys": ["super+ctrl+alt+up"], "command": "select_lines", "args": {"forward": false} },
-    { "keys": ["super+ctrl+alt+down"], "command": "select_lines", "args": {"forward": true} },
+    { "keys": ["super+ctrl+alt+down"], "command": "select_lines", "args": {"forward": true} }
 ]
