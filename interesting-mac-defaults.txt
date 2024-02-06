@@ -29,6 +29,8 @@ defaults write com.apple.dock autohide-time-modifier -float 0.1
 # System Preferences > Dock > Minimize Windows using > Scale effect
 defaults write com.apple.dock mineffect -string scale
 
+# Never automatically to switc spaces with open windows
+defaults write com.apple.dock workspaces-auto-swoosh -bool NO && killall Dock
 
 
 ### Mission Control
