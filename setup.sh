@@ -13,7 +13,7 @@ if [[ $REPLY != 'y' ]]; then
     exit
 fi
 
-home_files=".agignore .gitconfig .zshrc .tmux.conf .vimrc"
+home_files=".gitconfig .zshrc .tmux.conf .vimrc"
 for file in $home_files; do
     rm -f ~/$file
     ln -s $dir/$file ~/
