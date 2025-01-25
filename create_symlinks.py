@@ -19,9 +19,6 @@ symlinkables = {
     "sublime/Preferences.sublime-settings": subl_home,
     "sublime/Package\ Control.sublime-settings": subl_home,
 
-    # date-pasting shortcut
-    "Type\ the\ Date.workflow": "/Users/hunter/Library/Services",
-
     # todo: copy instead of symlink
     "custom-capslock.json": "~/.config/karabiner/assets/complex_modifications/",
 }
