@@ -41,4 +41,3 @@ The first time you run vim you will have to install the plugins with:
 ```sh
 :PluginInstall
 ```
-
